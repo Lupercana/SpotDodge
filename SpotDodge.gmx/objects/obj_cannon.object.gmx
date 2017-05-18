@@ -37,57 +37,35 @@
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>542</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_sprite_transform</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>0</kind>
-            <string>1</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>1</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>point_direction(creator_id.x, creator_id.y, mouse_x, mouse_y) - 90</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>109</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move_to</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>creator_id.x</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>creator_id.y</string>
+            <kind>1</kind>
+            <string>target_direction = point_direction(creator_id.x, creator_id.y, mouse_x, mouse_y);
+    
+if (target_direction &gt; (90 - creator_id.straight_deviation) &amp;&amp; target_direction &lt; (90 + creator_id.straight_deviation))
+{  
+    if (target_direction &gt; 90)
+        target_direction = (90 + creator_id.straight_deviation);
+    else
+        target_direction = (90 - creator_id.straight_deviation);
+}
+
+image_angle = target_direction - 90;
+
+x = creator_id.x;
+y = creator_id.y;
+</string>
           </argument>
         </arguments>
       </action>

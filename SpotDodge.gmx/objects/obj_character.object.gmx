@@ -251,6 +251,30 @@
       </action>
       <action>
         <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>straight_deviation</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>15</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -490,7 +514,18 @@ else
 with (ball)
 {
     speed = floor(global.ball_speed);
-    direction = point_direction(other.x, other.y, mouse_x, mouse_y);
+    
+    target_direction = point_direction(other.x, other.y, mouse_x, mouse_y);
+    
+    if (target_direction &gt; (90 - other.straight_deviation) &amp;&amp; target_direction &lt; (90 + other.straight_deviation))
+    {  
+        if (target_direction &gt; 90)
+            target_direction = (90 + other.straight_deviation);
+        else
+            target_direction = (90 - other.straight_deviation);
+    }
+    
+    direction = target_direction;
     init_speed = global.ball_speed;
     neg_accel = global.ball_speed / 50;
 }
